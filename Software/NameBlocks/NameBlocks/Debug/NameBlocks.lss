@@ -1,0 +1,430 @@
+
+NameBlocks.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000002a0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000024c  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000002a0  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002d0  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  0000030c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000088a  00000000  00000000  0000032c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000762  00000000  00000000  00000bb6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000003cf  00000000  00000000  00001318  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  000016e8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003ff  00000000  00000000  0000170c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000d8  00000000  00000000  00001b0b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00001be3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	19 c0       	rjmp	.+50     	; 0x34 <__ctors_end>
+   2:	20 c0       	rjmp	.+64     	; 0x44 <__bad_interrupt>
+   4:	1f c0       	rjmp	.+62     	; 0x44 <__bad_interrupt>
+   6:	1e c0       	rjmp	.+60     	; 0x44 <__bad_interrupt>
+   8:	1d c0       	rjmp	.+58     	; 0x44 <__bad_interrupt>
+   a:	1c c0       	rjmp	.+56     	; 0x44 <__bad_interrupt>
+   c:	1b c0       	rjmp	.+54     	; 0x44 <__bad_interrupt>
+   e:	1a c0       	rjmp	.+52     	; 0x44 <__bad_interrupt>
+  10:	19 c0       	rjmp	.+50     	; 0x44 <__bad_interrupt>
+  12:	18 c0       	rjmp	.+48     	; 0x44 <__bad_interrupt>
+  14:	17 c0       	rjmp	.+46     	; 0x44 <__bad_interrupt>
+  16:	16 c0       	rjmp	.+44     	; 0x44 <__bad_interrupt>
+  18:	15 c0       	rjmp	.+42     	; 0x44 <__bad_interrupt>
+  1a:	14 c0       	rjmp	.+40     	; 0x44 <__bad_interrupt>
+  1c:	13 c0       	rjmp	.+38     	; 0x44 <__bad_interrupt>
+  1e:	12 c0       	rjmp	.+36     	; 0x44 <__bad_interrupt>
+  20:	11 c0       	rjmp	.+34     	; 0x44 <__bad_interrupt>
+  22:	10 c0       	rjmp	.+32     	; 0x44 <__bad_interrupt>
+  24:	0f c0       	rjmp	.+30     	; 0x44 <__bad_interrupt>
+  26:	0e c0       	rjmp	.+28     	; 0x44 <__bad_interrupt>
+  28:	0d c0       	rjmp	.+26     	; 0x44 <__bad_interrupt>
+  2a:	0c c0       	rjmp	.+24     	; 0x44 <__bad_interrupt>
+  2c:	0b c0       	rjmp	.+22     	; 0x44 <__bad_interrupt>
+  2e:	0a c0       	rjmp	.+20     	; 0x44 <__bad_interrupt>
+  30:	09 c0       	rjmp	.+18     	; 0x44 <__bad_interrupt>
+  32:	08 c0       	rjmp	.+16     	; 0x44 <__bad_interrupt>
+
+00000034 <__ctors_end>:
+  34:	11 24       	eor	r1, r1
+  36:	1f be       	out	0x3f, r1	; 63
+  38:	cf ef       	ldi	r28, 0xFF	; 255
+  3a:	d2 e0       	ldi	r29, 0x02	; 2
+  3c:	de bf       	out	0x3e, r29	; 62
+  3e:	cd bf       	out	0x3d, r28	; 61
+  40:	02 d0       	rcall	.+4      	; 0x46 <main>
+  42:	02 c1       	rjmp	.+516    	; 0x248 <_exit>
+
+00000044 <__bad_interrupt>:
+  44:	dd cf       	rjmp	.-70     	; 0x0 <__vectors>
+
+00000046 <main>:
+#include <avr/io.h>
+#include <util/delay.h>
+
+int main(void)
+{
+    DDRA |= (0xFF<<DDRA);
+  46:	21 b1       	in	r18, 0x01	; 1
+  48:	41 b1       	in	r20, 0x01	; 1
+  4a:	8f ef       	ldi	r24, 0xFF	; 255
+  4c:	90 e0       	ldi	r25, 0x00	; 0
+  4e:	6c 01       	movw	r12, r24
+  50:	02 c0       	rjmp	.+4      	; 0x56 <main+0x10>
+  52:	cc 0c       	add	r12, r12
+  54:	dd 1c       	adc	r13, r13
+  56:	2a 95       	dec	r18
+  58:	e2 f7       	brpl	.-8      	; 0x52 <main+0xc>
+  5a:	96 01       	movw	r18, r12
+  5c:	24 2b       	or	r18, r20
+  5e:	21 b9       	out	0x01, r18	; 1
+	DDRB |= (0xFF<<DDRB);
+  60:	25 b1       	in	r18, 0x05	; 5
+  62:	45 b1       	in	r20, 0x05	; 5
+  64:	bc 01       	movw	r22, r24
+  66:	02 c0       	rjmp	.+4      	; 0x6c <main+0x26>
+  68:	66 0f       	add	r22, r22
+  6a:	77 1f       	adc	r23, r23
+  6c:	2a 95       	dec	r18
+  6e:	e2 f7       	brpl	.-8      	; 0x68 <main+0x22>
+  70:	9b 01       	movw	r18, r22
+  72:	24 2b       	or	r18, r20
+  74:	25 b9       	out	0x05, r18	; 5
+	DDRC |= (0xFF<<DDRC);
+  76:	39 b1       	in	r19, 0x09	; 9
+  78:	29 b1       	in	r18, 0x09	; 9
+  7a:	02 c0       	rjmp	.+4      	; 0x80 <main+0x3a>
+  7c:	88 0f       	add	r24, r24
+  7e:	99 1f       	adc	r25, r25
+  80:	3a 95       	dec	r19
+  82:	e2 f7       	brpl	.-8      	; 0x7c <main+0x36>
+  84:	82 2b       	or	r24, r18
+  86:	89 b9       	out	0x09, r24	; 9
+
+	PUEA |= (0x00<<PUEA);
+  88:	83 b1       	in	r24, 0x03	; 3
+  8a:	83 b1       	in	r24, 0x03	; 3
+  8c:	83 b9       	out	0x03, r24	; 3
+	PUEB |= (0x00<<PUEB);
+  8e:	87 b1       	in	r24, 0x07	; 7
+  90:	87 b1       	in	r24, 0x07	; 7
+  92:	87 b9       	out	0x07, r24	; 7
+	PUEC |= (0x00<<PUEC);
+  94:	8b b1       	in	r24, 0x0b	; 11
+  96:	8b b1       	in	r24, 0x0b	; 11
+  98:	8b b9       	out	0x0b, r24	; 11
+		PINA |= (0x00<<PINA);
+		PINB |= (0x00<<PINB);
+		PINC |= (0x00<<PINC);
+
+		// E
+		PINA |= (0b01111110<<PINA);
+  9a:	6e e7       	ldi	r22, 0x7E	; 126
+  9c:	70 e0       	ldi	r23, 0x00	; 0
+		PINB |= (0b01100110<<PINB);
+  9e:	46 e6       	ldi	r20, 0x66	; 102
+  a0:	50 e0       	ldi	r21, 0x00	; 0
+		PINA |= (0x00<<PINA);
+		PINB |= (0x00<<PINB);
+		PINC |= (0x00<<PINC);
+		
+		// R
+		PINA |= (0b11100010<<PINA);
+  a2:	02 ee       	ldi	r16, 0xE2	; 226
+  a4:	10 e0       	ldi	r17, 0x00	; 0
+		PINB |= (0b01100110<<PINB);
+		PINC |= (0b00000001<<PINC);
+  a6:	21 e0       	ldi	r18, 0x01	; 1
+  a8:	30 e0       	ldi	r19, 0x00	; 0
+		PINB |= (0x00<<PINB);
+		PINC |= (0x00<<PINC);
+		
+		// I
+		PINA |= (0b01111110<<PINA);
+		PINB |= (0b11011100<<PINB);
+  aa:	cc ed       	ldi	r28, 0xDC	; 220
+  ac:	d0 e0       	ldi	r29, 0x00	; 0
+		PINA |= (0x00<<PINA);
+		PINB |= (0x00<<PINB);
+		PINC |= (0x00<<PINC);
+		
+		// K
+		PINA |= (0b11101101<<PINA);
+  ae:	ad ee       	ldi	r26, 0xED	; 237
+  b0:	b0 e0       	ldi	r27, 0x00	; 0
+		PINB |= (0b01100111<<PINB);
+  b2:	0f 2e       	mov	r0, r31
+  b4:	f7 e6       	ldi	r31, 0x67	; 103
+  b6:	af 2e       	mov	r10, r31
+  b8:	b1 2c       	mov	r11, r1
+  ba:	f0 2d       	mov	r31, r0
+	PUEC |= (0x00<<PUEC);
+
+	while(1){
+
+		// Need to reset all pin states between characters.
+		PINA |= (0x00<<PINA);
+  bc:	80 b1       	in	r24, 0x00	; 0
+  be:	80 b1       	in	r24, 0x00	; 0
+  c0:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0x00<<PINB);
+  c2:	84 b1       	in	r24, 0x04	; 4
+  c4:	84 b1       	in	r24, 0x04	; 4
+  c6:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0x00<<PINC);
+  c8:	88 b1       	in	r24, 0x08	; 8
+  ca:	88 b1       	in	r24, 0x08	; 8
+  cc:	88 b9       	out	0x08, r24	; 8
+		
+		PINA |= (0x00<<PINA);
+  ce:	80 b1       	in	r24, 0x00	; 0
+  d0:	80 b1       	in	r24, 0x00	; 0
+  d2:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0x00<<PINB);
+  d4:	84 b1       	in	r24, 0x04	; 4
+  d6:	84 b1       	in	r24, 0x04	; 4
+  d8:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0x00<<PINC);
+  da:	88 b1       	in	r24, 0x08	; 8
+  dc:	88 b1       	in	r24, 0x08	; 8
+  de:	88 b9       	out	0x08, r24	; 8
+
+		// E
+		PINA |= (0b01111110<<PINA);
+  e0:	80 b1       	in	r24, 0x00	; 0
+  e2:	f0 b0       	in	r15, 0x00	; 0
+  e4:	fb 01       	movw	r30, r22
+  e6:	02 c0       	rjmp	.+4      	; 0xec <main+0xa6>
+  e8:	ee 0f       	add	r30, r30
+  ea:	ff 1f       	adc	r31, r31
+  ec:	8a 95       	dec	r24
+  ee:	e2 f7       	brpl	.-8      	; 0xe8 <main+0xa2>
+  f0:	cf 01       	movw	r24, r30
+  f2:	8f 29       	or	r24, r15
+  f4:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0b01100110<<PINB);
+  f6:	84 b1       	in	r24, 0x04	; 4
+  f8:	f4 b0       	in	r15, 0x04	; 4
+  fa:	6a 01       	movw	r12, r20
+  fc:	02 c0       	rjmp	.+4      	; 0x102 <main+0xbc>
+  fe:	cc 0c       	add	r12, r12
+ 100:	dd 1c       	adc	r13, r13
+ 102:	8a 95       	dec	r24
+ 104:	e2 f7       	brpl	.-8      	; 0xfe <main+0xb8>
+ 106:	c6 01       	movw	r24, r12
+ 108:	8f 29       	or	r24, r15
+ 10a:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0b00000000<<PINC);
+ 10c:	88 b1       	in	r24, 0x08	; 8
+ 10e:	88 b1       	in	r24, 0x08	; 8
+ 110:	88 b9       	out	0x08, r24	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 112:	8f e9       	ldi	r24, 0x9F	; 159
+ 114:	96 e8       	ldi	r25, 0x86	; 134
+ 116:	e1 e0       	ldi	r30, 0x01	; 1
+ 118:	81 50       	subi	r24, 0x01	; 1
+ 11a:	90 40       	sbci	r25, 0x00	; 0
+ 11c:	e0 40       	sbci	r30, 0x00	; 0
+ 11e:	e1 f7       	brne	.-8      	; 0x118 <main+0xd2>
+ 120:	00 c0       	rjmp	.+0      	; 0x122 <main+0xdc>
+ 122:	00 00       	nop
+		_delay_ms(PAUSE);
+		
+		PINA |= (0x00<<PINA);
+ 124:	80 b1       	in	r24, 0x00	; 0
+ 126:	80 b1       	in	r24, 0x00	; 0
+ 128:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0x00<<PINB);
+ 12a:	84 b1       	in	r24, 0x04	; 4
+ 12c:	84 b1       	in	r24, 0x04	; 4
+ 12e:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0x00<<PINC);
+ 130:	88 b1       	in	r24, 0x08	; 8
+ 132:	88 b1       	in	r24, 0x08	; 8
+ 134:	88 b9       	out	0x08, r24	; 8
+		
+		// R
+		PINA |= (0b11100010<<PINA);
+ 136:	80 b1       	in	r24, 0x00	; 0
+ 138:	f0 b0       	in	r15, 0x00	; 0
+ 13a:	68 01       	movw	r12, r16
+ 13c:	02 c0       	rjmp	.+4      	; 0x142 <main+0xfc>
+ 13e:	cc 0c       	add	r12, r12
+ 140:	dd 1c       	adc	r13, r13
+ 142:	8a 95       	dec	r24
+ 144:	e2 f7       	brpl	.-8      	; 0x13e <main+0xf8>
+ 146:	c6 01       	movw	r24, r12
+ 148:	8f 29       	or	r24, r15
+ 14a:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0b01100110<<PINB);
+ 14c:	84 b1       	in	r24, 0x04	; 4
+ 14e:	f4 b0       	in	r15, 0x04	; 4
+ 150:	fa 01       	movw	r30, r20
+ 152:	02 c0       	rjmp	.+4      	; 0x158 <main+0x112>
+ 154:	ee 0f       	add	r30, r30
+ 156:	ff 1f       	adc	r31, r31
+ 158:	8a 95       	dec	r24
+ 15a:	e2 f7       	brpl	.-8      	; 0x154 <main+0x10e>
+ 15c:	cf 01       	movw	r24, r30
+ 15e:	8f 29       	or	r24, r15
+ 160:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0b00000001<<PINC);
+ 162:	88 b1       	in	r24, 0x08	; 8
+ 164:	f8 b0       	in	r15, 0x08	; 8
+ 166:	69 01       	movw	r12, r18
+ 168:	02 c0       	rjmp	.+4      	; 0x16e <main+0x128>
+ 16a:	cc 0c       	add	r12, r12
+ 16c:	dd 1c       	adc	r13, r13
+ 16e:	8a 95       	dec	r24
+ 170:	e2 f7       	brpl	.-8      	; 0x16a <main+0x124>
+ 172:	c6 01       	movw	r24, r12
+ 174:	8f 29       	or	r24, r15
+ 176:	88 b9       	out	0x08, r24	; 8
+ 178:	8f e9       	ldi	r24, 0x9F	; 159
+ 17a:	96 e8       	ldi	r25, 0x86	; 134
+ 17c:	e1 e0       	ldi	r30, 0x01	; 1
+ 17e:	81 50       	subi	r24, 0x01	; 1
+ 180:	90 40       	sbci	r25, 0x00	; 0
+ 182:	e0 40       	sbci	r30, 0x00	; 0
+ 184:	e1 f7       	brne	.-8      	; 0x17e <main+0x138>
+ 186:	00 c0       	rjmp	.+0      	; 0x188 <main+0x142>
+ 188:	00 00       	nop
+		_delay_ms(PAUSE);
+		
+		PINA |= (0x00<<PINA);
+ 18a:	80 b1       	in	r24, 0x00	; 0
+ 18c:	80 b1       	in	r24, 0x00	; 0
+ 18e:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0x00<<PINB);
+ 190:	84 b1       	in	r24, 0x04	; 4
+ 192:	84 b1       	in	r24, 0x04	; 4
+ 194:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0x00<<PINC);
+ 196:	88 b1       	in	r24, 0x08	; 8
+ 198:	88 b1       	in	r24, 0x08	; 8
+ 19a:	88 b9       	out	0x08, r24	; 8
+		
+		// I
+		PINA |= (0b01111110<<PINA);
+ 19c:	80 b1       	in	r24, 0x00	; 0
+ 19e:	f0 b0       	in	r15, 0x00	; 0
+ 1a0:	6b 01       	movw	r12, r22
+ 1a2:	02 c0       	rjmp	.+4      	; 0x1a8 <main+0x162>
+ 1a4:	cc 0c       	add	r12, r12
+ 1a6:	dd 1c       	adc	r13, r13
+ 1a8:	8a 95       	dec	r24
+ 1aa:	e2 f7       	brpl	.-8      	; 0x1a4 <main+0x15e>
+ 1ac:	c6 01       	movw	r24, r12
+ 1ae:	8f 29       	or	r24, r15
+ 1b0:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0b11011100<<PINB);
+ 1b2:	84 b1       	in	r24, 0x04	; 4
+ 1b4:	f4 b0       	in	r15, 0x04	; 4
+ 1b6:	fe 01       	movw	r30, r28
+ 1b8:	02 c0       	rjmp	.+4      	; 0x1be <main+0x178>
+ 1ba:	ee 0f       	add	r30, r30
+ 1bc:	ff 1f       	adc	r31, r31
+ 1be:	8a 95       	dec	r24
+ 1c0:	e2 f7       	brpl	.-8      	; 0x1ba <main+0x174>
+ 1c2:	cf 01       	movw	r24, r30
+ 1c4:	8f 29       	or	r24, r15
+ 1c6:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0b00000000<<PINC);
+ 1c8:	88 b1       	in	r24, 0x08	; 8
+ 1ca:	88 b1       	in	r24, 0x08	; 8
+ 1cc:	88 b9       	out	0x08, r24	; 8
+ 1ce:	ff e9       	ldi	r31, 0x9F	; 159
+ 1d0:	86 e8       	ldi	r24, 0x86	; 134
+ 1d2:	91 e0       	ldi	r25, 0x01	; 1
+ 1d4:	f1 50       	subi	r31, 0x01	; 1
+ 1d6:	80 40       	sbci	r24, 0x00	; 0
+ 1d8:	90 40       	sbci	r25, 0x00	; 0
+ 1da:	e1 f7       	brne	.-8      	; 0x1d4 <main+0x18e>
+ 1dc:	00 c0       	rjmp	.+0      	; 0x1de <main+0x198>
+ 1de:	00 00       	nop
+		_delay_ms(PAUSE);
+		
+		PINA |= (0x00<<PINA);
+ 1e0:	80 b1       	in	r24, 0x00	; 0
+ 1e2:	80 b1       	in	r24, 0x00	; 0
+ 1e4:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0x00<<PINB);
+ 1e6:	84 b1       	in	r24, 0x04	; 4
+ 1e8:	84 b1       	in	r24, 0x04	; 4
+ 1ea:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0x00<<PINC);
+ 1ec:	88 b1       	in	r24, 0x08	; 8
+ 1ee:	88 b1       	in	r24, 0x08	; 8
+ 1f0:	88 b9       	out	0x08, r24	; 8
+		
+		// K
+		PINA |= (0b11101101<<PINA);
+ 1f2:	80 b1       	in	r24, 0x00	; 0
+ 1f4:	f0 b0       	in	r15, 0x00	; 0
+ 1f6:	fd 01       	movw	r30, r26
+ 1f8:	02 c0       	rjmp	.+4      	; 0x1fe <main+0x1b8>
+ 1fa:	ee 0f       	add	r30, r30
+ 1fc:	ff 1f       	adc	r31, r31
+ 1fe:	8a 95       	dec	r24
+ 200:	e2 f7       	brpl	.-8      	; 0x1fa <main+0x1b4>
+ 202:	cf 01       	movw	r24, r30
+ 204:	8f 29       	or	r24, r15
+ 206:	80 b9       	out	0x00, r24	; 0
+		PINB |= (0b01100111<<PINB);
+ 208:	84 b1       	in	r24, 0x04	; 4
+ 20a:	f4 b0       	in	r15, 0x04	; 4
+ 20c:	65 01       	movw	r12, r10
+ 20e:	02 c0       	rjmp	.+4      	; 0x214 <main+0x1ce>
+ 210:	cc 0c       	add	r12, r12
+ 212:	dd 1c       	adc	r13, r13
+ 214:	8a 95       	dec	r24
+ 216:	e2 f7       	brpl	.-8      	; 0x210 <main+0x1ca>
+ 218:	c6 01       	movw	r24, r12
+ 21a:	8f 29       	or	r24, r15
+ 21c:	84 b9       	out	0x04, r24	; 4
+		PINC |= (0b00000001<<PINC);
+ 21e:	88 b1       	in	r24, 0x08	; 8
+ 220:	f8 b0       	in	r15, 0x08	; 8
+ 222:	f9 01       	movw	r30, r18
+ 224:	02 c0       	rjmp	.+4      	; 0x22a <main+0x1e4>
+ 226:	ee 0f       	add	r30, r30
+ 228:	ff 1f       	adc	r31, r31
+ 22a:	8a 95       	dec	r24
+ 22c:	e2 f7       	brpl	.-8      	; 0x226 <main+0x1e0>
+ 22e:	cf 01       	movw	r24, r30
+ 230:	8f 29       	or	r24, r15
+ 232:	88 b9       	out	0x08, r24	; 8
+ 234:	ff e9       	ldi	r31, 0x9F	; 159
+ 236:	86 e8       	ldi	r24, 0x86	; 134
+ 238:	91 e0       	ldi	r25, 0x01	; 1
+ 23a:	f1 50       	subi	r31, 0x01	; 1
+ 23c:	80 40       	sbci	r24, 0x00	; 0
+ 23e:	90 40       	sbci	r25, 0x00	; 0
+ 240:	e1 f7       	brne	.-8      	; 0x23a <main+0x1f4>
+ 242:	00 c0       	rjmp	.+0      	; 0x244 <main+0x1fe>
+ 244:	00 00       	nop
+ 246:	3a cf       	rjmp	.-396    	; 0xbc <main+0x76>
+
+00000248 <_exit>:
+ 248:	f8 94       	cli
+
+0000024a <__stop_program>:
+ 24a:	ff cf       	rjmp	.-2      	; 0x24a <__stop_program>
