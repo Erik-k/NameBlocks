@@ -1,4 +1,4 @@
-update=11/2/2017 2:00:24 PM
+update=12/18/2017 4:25:28 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,6 +23,8 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
+[general]
+version=1
 [eeschema]
 version=1
 LibDir=
@@ -56,5 +58,5 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
-[general]
-version=1
+LibName30=C:/Program Files/KiCad/share/kicad/library/Kingbright
+LibName31=C:/Program Files/KiCad/share/kicad/library/MAX16054
