@@ -64,6 +64,7 @@ int main(void)
 	
 	char iterations_left = 2;
 	while (iterations_left >= 0){
+		_delay_ms(100);			// Let everything settle before checking port C
 		CheckPortC();
 		if (C0 & C1 & C2){
 			AllLightsOff();

@@ -1,4 +1,4 @@
-update=12/18/2017 4:25:28 PM
+update=1/17/2018 5:53:30 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -60,3 +60,14 @@ LibName28=contrib
 LibName29=valves
 LibName30=C:/Program Files/KiCad/share/kicad/library/Kingbright
 LibName31=C:/Program Files/KiCad/share/kicad/library/MAX16054
+LibName32=H:/SolarPoweredHomeMonitor/SolarClapboard/SolarClapboard-cache
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=100

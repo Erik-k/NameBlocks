@@ -3,33 +3,33 @@ StoplightTest.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000246  2**0
+  0 .data         00000000  00800100  00800100  00000252  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000001d2  00000000  00000000  00000074  2**1
+  1 .text         000001de  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000003  00800100  00800100  00000246  2**0
+  2 .bss          00000003  00800100  00800100  00000252  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000246  2**0
+  3 .comment      00000030  00000000  00000000  00000252  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000278  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000284  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000050  00000000  00000000  000002b4  2**0
+  5 .debug_aranges 00000050  00000000  00000000  000002c0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000871  00000000  00000000  00000304  2**0
+  6 .debug_info   000008f5  00000000  00000000  00000310  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000709  00000000  00000000  00000b75  2**0
+  7 .debug_abbrev 00000771  00000000  00000000  00000c05  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000504  00000000  00000000  0000127e  2**0
+  8 .debug_line   00000510  00000000  00000000  00001376  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000090  00000000  00000000  00001784  2**2
+  9 .debug_frame  00000090  00000000  00000000  00001888  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000069b5  00000000  00000000  00001814  2**0
+ 10 .debug_str    00006a00  00000000  00000000  00001918  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000043  00000000  00000000  000081c9  2**0
+ 11 .debug_loc    0000008b  00000000  00000000  00008318  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000040  00000000  00000000  0000820c  2**0
+ 12 .debug_ranges 00000040  00000000  00000000  000083a3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  000025a9  00000000  00000000  0000824c  2**0
+ 13 .debug_macro  000025a9  00000000  00000000  000083e3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -84,7 +84,7 @@ Disassembly of section .text:
   4c:	b2 07       	cpc	r27, r18
   4e:	e1 f7       	brne	.-8      	; 0x48 <.do_clear_bss_loop>
   50:	46 d0       	rcall	.+140    	; 0xde <main>
-  52:	bd c0       	rjmp	.+378    	; 0x1ce <_exit>
+  52:	c3 c0       	rjmp	.+390    	; 0x1da <_exit>
 
 00000054 <__bad_interrupt>:
   54:	d5 cf       	rjmp	.-86     	; 0x0 <__vectors>
@@ -265,107 +265,119 @@ int main(void)
 		else if (C0 & C1 & !C2){
  13c:	c1 e0       	ldi	r28, 0x01	; 1
  13e:	d0 e0       	ldi	r29, 0x00	; 0
-	
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 140:	87 ea       	ldi	r24, 0xA7	; 167
+ 142:	91 e6       	ldi	r25, 0x61	; 97
+ 144:	01 97       	sbiw	r24, 0x01	; 1
+ 146:	f1 f7       	brne	.-4      	; 0x144 <main+0x66>
+ 148:	00 c0       	rjmp	.+0      	; 0x14a <main+0x6c>
+ 14a:	00 00       	nop
 	PORTB &= (0x00<<PORTB);	// B0, B1, B2 low
 	
 	char iterations_left = 2;
 	while (iterations_left >= 0){
+		_delay_ms(100);			// Let everything settle before checking port C
 		CheckPortC();
- 140:	be df       	rcall	.-132    	; 0xbe <CheckPortC>
+ 14c:	b8 df       	rcall	.-144    	; 0xbe <CheckPortC>
 		if (C0 & C1 & C2){
- 142:	20 91 02 01 	lds	r18, 0x0102	; 0x800102 <C0>
- 146:	30 91 01 01 	lds	r19, 0x0101	; 0x800101 <C1>
- 14a:	42 2f       	mov	r20, r18
- 14c:	43 23       	and	r20, r19
- 14e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
- 152:	94 2f       	mov	r25, r20
- 154:	98 23       	and	r25, r24
- 156:	71 f0       	breq	.+28     	; 0x174 <main+0x96>
+ 14e:	20 91 02 01 	lds	r18, 0x0102	; 0x800102 <C0>
+ 152:	30 91 01 01 	lds	r19, 0x0101	; 0x800101 <C1>
+ 156:	42 2f       	mov	r20, r18
+ 158:	43 23       	and	r20, r19
+ 15a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 15e:	94 2f       	mov	r25, r20
+ 160:	98 23       	and	r25, r24
+ 162:	71 f0       	breq	.+28     	; 0x180 <main+0xa2>
 			AllLightsOff();
- 158:	7e df       	rcall	.-260    	; 0x56 <AllLightsOff>
+ 164:	78 df       	rcall	.-272    	; 0x56 <AllLightsOff>
 			PORTB |= (0x03<<PORTB);	// B0 High, B1 High, B2 Low = 0b00000011
- 15a:	36 b1       	in	r19, 0x06	; 6
- 15c:	26 b1       	in	r18, 0x06	; 6
- 15e:	83 e0       	ldi	r24, 0x03	; 3
- 160:	90 e0       	ldi	r25, 0x00	; 0
- 162:	02 c0       	rjmp	.+4      	; 0x168 <main+0x8a>
- 164:	88 0f       	add	r24, r24
- 166:	99 1f       	adc	r25, r25
- 168:	3a 95       	dec	r19
- 16a:	e2 f7       	brpl	.-8      	; 0x164 <main+0x86>
- 16c:	82 2b       	or	r24, r18
- 16e:	86 b9       	out	0x06, r24	; 6
+ 166:	36 b1       	in	r19, 0x06	; 6
+ 168:	26 b1       	in	r18, 0x06	; 6
+ 16a:	83 e0       	ldi	r24, 0x03	; 3
+ 16c:	90 e0       	ldi	r25, 0x00	; 0
+ 16e:	02 c0       	rjmp	.+4      	; 0x174 <main+0x96>
+ 170:	88 0f       	add	r24, r24
+ 172:	99 1f       	adc	r25, r25
+ 174:	3a 95       	dec	r19
+ 176:	e2 f7       	brpl	.-8      	; 0x170 <main+0x92>
+ 178:	82 2b       	or	r24, r18
+ 17a:	86 b9       	out	0x06, r24	; 6
 			GreenLightOn();
- 170:	82 df       	rcall	.-252    	; 0x76 <GreenLightOn>
+ 17c:	7c df       	rcall	.-264    	; 0x76 <GreenLightOn>
 			break;
- 172:	28 c0       	rjmp	.+80     	; 0x1c4 <main+0xe6>
+ 17e:	28 c0       	rjmp	.+80     	; 0x1d0 <main+0xf2>
 		}
 		else if (C0 & C1 & !C2){
- 174:	9c 2f       	mov	r25, r28
- 176:	81 11       	cpse	r24, r1
- 178:	9d 2f       	mov	r25, r29
- 17a:	50 e0       	ldi	r21, 0x00	; 0
- 17c:	69 2f       	mov	r22, r25
- 17e:	70 e0       	ldi	r23, 0x00	; 0
- 180:	46 23       	and	r20, r22
- 182:	57 23       	and	r21, r23
- 184:	45 2b       	or	r20, r21
- 186:	71 f0       	breq	.+28     	; 0x1a4 <main+0xc6>
+ 180:	9c 2f       	mov	r25, r28
+ 182:	81 11       	cpse	r24, r1
+ 184:	9d 2f       	mov	r25, r29
+ 186:	50 e0       	ldi	r21, 0x00	; 0
+ 188:	69 2f       	mov	r22, r25
+ 18a:	70 e0       	ldi	r23, 0x00	; 0
+ 18c:	46 23       	and	r20, r22
+ 18e:	57 23       	and	r21, r23
+ 190:	45 2b       	or	r20, r21
+ 192:	71 f0       	breq	.+28     	; 0x1b0 <main+0xd2>
 			AllLightsOff();
- 188:	66 df       	rcall	.-308    	; 0x56 <AllLightsOff>
+ 194:	60 df       	rcall	.-320    	; 0x56 <AllLightsOff>
 			PORTB |= (0x01<<PORTB); // B0 High, B1 Low, B2 Low = 0b00000001
- 18a:	36 b1       	in	r19, 0x06	; 6
- 18c:	26 b1       	in	r18, 0x06	; 6
- 18e:	81 e0       	ldi	r24, 0x01	; 1
- 190:	90 e0       	ldi	r25, 0x00	; 0
- 192:	02 c0       	rjmp	.+4      	; 0x198 <main+0xba>
- 194:	88 0f       	add	r24, r24
- 196:	99 1f       	adc	r25, r25
- 198:	3a 95       	dec	r19
- 19a:	e2 f7       	brpl	.-8      	; 0x194 <main+0xb6>
- 19c:	82 2b       	or	r24, r18
- 19e:	86 b9       	out	0x06, r24	; 6
+ 196:	36 b1       	in	r19, 0x06	; 6
+ 198:	26 b1       	in	r18, 0x06	; 6
+ 19a:	81 e0       	ldi	r24, 0x01	; 1
+ 19c:	90 e0       	ldi	r25, 0x00	; 0
+ 19e:	02 c0       	rjmp	.+4      	; 0x1a4 <main+0xc6>
+ 1a0:	88 0f       	add	r24, r24
+ 1a2:	99 1f       	adc	r25, r25
+ 1a4:	3a 95       	dec	r19
+ 1a6:	e2 f7       	brpl	.-8      	; 0x1a0 <main+0xc2>
+ 1a8:	82 2b       	or	r24, r18
+ 1aa:	86 b9       	out	0x06, r24	; 6
 			YellowLightOn();
- 1a0:	76 df       	rcall	.-276    	; 0x8e <YellowLightOn>
+ 1ac:	70 df       	rcall	.-288    	; 0x8e <YellowLightOn>
 			break;
- 1a2:	10 c0       	rjmp	.+32     	; 0x1c4 <main+0xe6>
+ 1ae:	10 c0       	rjmp	.+32     	; 0x1d0 <main+0xf2>
 		}
 		else if (C0 & !C1 & !C2){
- 1a4:	8c 2f       	mov	r24, r28
- 1a6:	31 11       	cpse	r19, r1
- 1a8:	8d 2f       	mov	r24, r29
- 1aa:	98 23       	and	r25, r24
- 1ac:	89 2f       	mov	r24, r25
- 1ae:	90 e0       	ldi	r25, 0x00	; 0
- 1b0:	30 e0       	ldi	r19, 0x00	; 0
- 1b2:	82 23       	and	r24, r18
- 1b4:	93 23       	and	r25, r19
- 1b6:	89 2b       	or	r24, r25
- 1b8:	19 f0       	breq	.+6      	; 0x1c0 <main+0xe2>
+ 1b0:	8c 2f       	mov	r24, r28
+ 1b2:	31 11       	cpse	r19, r1
+ 1b4:	8d 2f       	mov	r24, r29
+ 1b6:	98 23       	and	r25, r24
+ 1b8:	89 2f       	mov	r24, r25
+ 1ba:	90 e0       	ldi	r25, 0x00	; 0
+ 1bc:	30 e0       	ldi	r19, 0x00	; 0
+ 1be:	82 23       	and	r24, r18
+ 1c0:	93 23       	and	r25, r19
+ 1c2:	89 2b       	or	r24, r25
+ 1c4:	19 f0       	breq	.+6      	; 0x1cc <main+0xee>
 			AllLightsOff();	// PORTB stays all low
- 1ba:	4d df       	rcall	.-358    	; 0x56 <AllLightsOff>
+ 1c6:	47 df       	rcall	.-370    	; 0x56 <AllLightsOff>
 			RedLightOn();
- 1bc:	74 df       	rcall	.-280    	; 0xa6 <RedLightOn>
+ 1c8:	6e df       	rcall	.-292    	; 0xa6 <RedLightOn>
 			break;
- 1be:	02 c0       	rjmp	.+4      	; 0x1c4 <main+0xe6>
+ 1ca:	02 c0       	rjmp	.+4      	; 0x1d0 <main+0xf2>
 		}
 		else{
 			// ERROR CONDITION this state should never happen
 			AllLightsOn();
- 1c0:	56 df       	rcall	.-340    	; 0x6e <AllLightsOn>
+ 1cc:	50 df       	rcall	.-352    	; 0x6e <AllLightsOn>
 		}
 		iterations_left--;
 	}
- 1c2:	be cf       	rjmp	.-132    	; 0x140 <main+0x62>
+ 1ce:	b8 cf       	rjmp	.-144    	; 0x140 <main+0x62>
 }
- 1c4:	80 e0       	ldi	r24, 0x00	; 0
- 1c6:	90 e0       	ldi	r25, 0x00	; 0
- 1c8:	df 91       	pop	r29
- 1ca:	cf 91       	pop	r28
- 1cc:	08 95       	ret
+ 1d0:	80 e0       	ldi	r24, 0x00	; 0
+ 1d2:	90 e0       	ldi	r25, 0x00	; 0
+ 1d4:	df 91       	pop	r29
+ 1d6:	cf 91       	pop	r28
+ 1d8:	08 95       	ret
 
-000001ce <_exit>:
- 1ce:	f8 94       	cli
+000001da <_exit>:
+ 1da:	f8 94       	cli
 
-000001d0 <__stop_program>:
- 1d0:	ff cf       	rjmp	.-2      	; 0x1d0 <__stop_program>
+000001dc <__stop_program>:
+ 1dc:	ff cf       	rjmp	.-2      	; 0x1dc <__stop_program>
