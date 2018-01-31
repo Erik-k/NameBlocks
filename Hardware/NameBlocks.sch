@@ -79,7 +79,7 @@ U 1 1 5A3818AD
 P 1000 1800
 F 0 "BT1" H 1100 1900 50  0000 L CNN
 F 1 "Battery_Cell" H 1100 1800 50  0000 L CNN
-F 2 "Battery_Holders:Keystone_1058_1x2032-CoinCell" V 1000 1860 50  0001 C CNN
+F 2 "Battery_Holders:CR2032_SMD_BatteryHolder_BU2032SM-BT-GTR" V 1000 1860 50  0001 C CNN
 F 3 "" V 1000 1860 50  0001 C CNN
 	1    1000 1800
 	1    0    0    -1  
@@ -159,10 +159,10 @@ Wire Wire Line
 NoConn ~ 4400 2850
 NoConn ~ 4000 2850
 $Comp
-L VCC #PWR4
+L VCC #PWR01
 U 1 1 5A383D97
 P 1000 1350
-F 0 "#PWR4" H 1000 1200 50  0001 C CNN
+F 0 "#PWR01" H 1000 1200 50  0001 C CNN
 F 1 "VCC" H 1000 1500 50  0000 C CNN
 F 2 "" H 1000 1350 50  0001 C CNN
 F 3 "" H 1000 1350 50  0001 C CNN
@@ -170,10 +170,10 @@ F 3 "" H 1000 1350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR7
+L GND #PWR02
 U 1 1 5A383DC9
 P 1000 2150
-F 0 "#PWR7" H 1000 1900 50  0001 C CNN
+F 0 "#PWR02" H 1000 1900 50  0001 C CNN
 F 1 "GND" H 1000 2000 50  0000 C CNN
 F 2 "" H 1000 2150 50  0001 C CNN
 F 3 "" H 1000 2150 50  0001 C CNN
@@ -202,10 +202,10 @@ F 3 "" H 2950 6150 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR13
+L GND #PWR03
 U 1 1 5A3872BB
 P 3400 7250
-F 0 "#PWR13" H 3400 7000 50  0001 C CNN
+F 0 "#PWR03" H 3400 7000 50  0001 C CNN
 F 1 "GND" H 3400 7100 50  0000 C CNN
 F 2 "" H 3400 7250 50  0001 C CNN
 F 3 "" H 3400 7250 50  0001 C CNN
@@ -213,10 +213,10 @@ F 3 "" H 3400 7250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L VCC #PWR9
+L VCC #PWR04
 U 1 1 5A3872DE
 P 3400 5850
-F 0 "#PWR9" H 3400 5700 50  0001 C CNN
+F 0 "#PWR04" H 3400 5700 50  0001 C CNN
 F 1 "VCC" H 3400 6000 50  0000 C CNN
 F 2 "" H 3400 5850 50  0001 C CNN
 F 3 "" H 3400 5850 50  0001 C CNN
@@ -226,8 +226,6 @@ $EndComp
 Wire Wire Line
 	3400 5850 3400 5950
 Wire Wire Line
-	2100 6400 2750 6400
-Wire Wire Line
 	3400 7200 3400 7250
 $Comp
 L R_Small R5
@@ -235,7 +233,7 @@ U 1 1 5A3891C9
 P 4500 6600
 F 0 "R5" H 4530 6620 50  0000 L CNN
 F 1 "1M" H 4530 6560 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 4500 6600 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4500 6600 50  0001 C CNN
 F 3 "" H 4500 6600 50  0001 C CNN
 	1    4500 6600
 	1    0    0    -1  
@@ -268,10 +266,10 @@ F 3 "" H 11050 5700 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L GND #PWR10
+L GND #PWR05
 U 1 1 5A3AFE18
 P 10850 6050
-F 0 "#PWR10" H 10850 5800 50  0001 C CNN
+F 0 "#PWR05" H 10850 5800 50  0001 C CNN
 F 1 "GND" H 10850 5900 50  0000 C CNN
 F 2 "" H 10850 6050 50  0001 C CNN
 F 3 "" H 10850 6050 50  0001 C CNN
@@ -281,20 +279,20 @@ $EndComp
 Text Notes 8950 5300 0    50   ~ 0
 OUTGOING male pins located on RIGHT of all boards.\nPin 1 is Button Line to ensure simultaneous power-up.\nPins 2, 3, 4 are signal lines.\nCurrent limiting resistor ensures chip won't burn out \nif a logic low connects to a logic high.\nPin 5 is shared common.
 Wire Wire Line
-	10300 5800 9850 5800
+	9600 5800 10300 5800
 Wire Wire Line
-	9850 5700 10500 5700
+	9600 5700 10500 5700
 Wire Wire Line
-	10500 5600 9850 5600
+	9600 5600 10500 5600
 Text Label 2350 6400 0    60   ~ 0
 Button
 Text Label 9850 5500 0    60   ~ 0
 Button
 $Comp
-L GND #PWR8
+L GND #PWR06
 U 1 1 5A3B1FDC
 P 1350 4550
-F 0 "#PWR8" H 1350 4300 50  0001 C CNN
+F 0 "#PWR06" H 1350 4300 50  0001 C CNN
 F 1 "GND" H 1350 4400 50  0000 C CNN
 F 2 "" H 1350 4550 50  0001 C CNN
 F 3 "" H 1350 4550 50  0001 C CNN
@@ -304,20 +302,20 @@ $EndComp
 Wire Wire Line
 	1350 4400 1350 4550
 Wire Wire Line
-	900  4000 1350 4000
-Text Label 1000 4000 0    60   ~ 0
+	750  4000 1350 4000
+Text Label 800  4000 0    60   ~ 0
 Button
 Wire Wire Line
-	900  4100 1350 4100
+	750  4100 1350 4100
 Wire Wire Line
 	8700 4350 8600 4350
 Text Label 8650 4250 0    60   ~ 0
 uC_gnd
 $Comp
-L GND #PWR11
+L GND #PWR07
 U 1 1 5A5BF1E1
 P 1200 6800
-F 0 "#PWR11" H 1200 6550 50  0001 C CNN
+F 0 "#PWR07" H 1200 6550 50  0001 C CNN
 F 1 "GND" H 1200 6650 50  0000 C CNN
 F 2 "" H 1200 6800 50  0001 C CNN
 F 3 "" H 1200 6800 50  0001 C CNN
@@ -335,10 +333,10 @@ Wire Wire Line
 Wire Wire Line
 	4800 6100 5400 6100
 $Comp
-L GND #PWR12
+L GND #PWR08
 U 1 1 5A5C11DF
 P 4800 7150
-F 0 "#PWR12" H 4800 6900 50  0001 C CNN
+F 0 "#PWR08" H 4800 6900 50  0001 C CNN
 F 1 "GND" H 4800 7000 50  0000 C CNN
 F 2 "" H 4800 7150 50  0001 C CNN
 F 3 "" H 4800 7150 50  0001 C CNN
@@ -355,10 +353,10 @@ Connection ~ 4800 6850
 Wire Wire Line
 	4500 6400 4500 6500
 $Comp
-L VCC #PWR3
+L VCC #PWR09
 U 1 1 5A5C1DBD
 P 8800 1300
-F 0 "#PWR3" H 8800 1150 50  0001 C CNN
+F 0 "#PWR09" H 8800 1150 50  0001 C CNN
 F 1 "VCC" H 8800 1450 50  0000 C CNN
 F 2 "" H 8800 1300 50  0001 C CNN
 F 3 "" H 8800 1300 50  0001 C CNN
@@ -369,10 +367,10 @@ Wire Wire Line
 	8700 4250 8700 4350
 Connection ~ 8700 4250
 $Comp
-L VCC #PWR2
+L VCC #PWR010
 U 1 1 5A5C3432
 P 2100 1300
-F 0 "#PWR2" H 2100 1150 50  0001 C CNN
+F 0 "#PWR010" H 2100 1150 50  0001 C CNN
 F 1 "VCC" H 2100 1450 50  0000 C CNN
 F 2 "" H 2100 1300 50  0001 C CNN
 F 3 "" H 2100 1300 50  0001 C CNN
@@ -412,33 +410,27 @@ Wire Wire Line
 Wire Wire Line
 	9850 5500 10850 5500
 Wire Wire Line
-	6100 3150 5550 3150
+	5350 3150 6100 3150
 Wire Wire Line
-	6100 3250 5550 3250
+	5350 3250 6100 3250
 Wire Wire Line
-	6100 3350 5550 3350
-Text Label 5600 3150 0    60   ~ 0
-Signal_C0
-Text Label 5600 3250 0    60   ~ 0
-Signal_C1
-Text Label 5600 3350 0    60   ~ 0
-Signal_C2
-Text Label 9850 5600 0    60   ~ 0
-Signal_C0
-Text Label 9850 5700 0    60   ~ 0
-Signal_C1
-Text Label 9850 5800 0    60   ~ 0
-Signal_C2
+	5350 3350 6100 3350
+Text Label 5400 3150 0    60   ~ 0
+Signal_Out_C0
+Text Label 5400 3250 0    60   ~ 0
+Signal_Out_C1
+Text Label 5400 3350 0    60   ~ 0
+Signal_Out_C2
 Wire Wire Line
-	1350 4200 900  4200
+	750  4200 1350 4200
 Wire Wire Line
-	1350 4300 900  4300
-Text Label 900  4100 0    60   ~ 0
-Signal_C0
-Text Label 900  4200 0    60   ~ 0
-Signal_C1
-Text Label 900  4300 0    60   ~ 0
-Signal_C2
+	750  4300 1350 4300
+Text Label 800  4100 0    60   ~ 0
+Signal_In_C3
+Text Label 800  4200 0    60   ~ 0
+Signal_In_C4
+Text Label 800  4300 0    60   ~ 0
+Signal_In_C5
 Wire Wire Line
 	6100 4050 5550 4050
 Text Label 5600 3850 0    60   ~ 0
@@ -449,31 +441,11 @@ U 1 1 5A5EF30A
 P 4100 7050
 F 0 "R6" H 4130 7070 50  0000 L CNN
 F 1 "1M" H 4130 7010 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 4100 7050 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4100 7050 50  0001 C CNN
 F 3 "" H 4100 7050 50  0001 C CNN
 	1    4100 7050
 	1    0    0    -1  
 $EndComp
-$Comp
-L R_Small R3
-U 1 1 5A5EF3C2
-P 2750 6100
-F 0 "R3" H 2780 6120 50  0000 L CNN
-F 1 "1M" H 2780 6060 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 2750 6100 50  0001 C CNN
-F 3 "" H 2750 6100 50  0001 C CNN
-F 4 "DNP" H 2850 6000 50  0000 C CNN "DNP"
-	1    2750 6100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2750 6000 2750 5950
-Wire Wire Line
-	2750 5950 3400 5950
-Wire Wire Line
-	2750 6400 2750 6200
-Text Notes 1650 5850 0    60   ~ 0
-DNP pullup on IN.\nShould be present inside device. 
 Wire Wire Line
 	4100 6950 4100 6800
 Connection ~ 4100 6800
@@ -490,20 +462,6 @@ MOSI
 Text Label 9300 1350 0    60   ~ 0
 RST
 $Comp
-L TEST TP1
-U 1 1 5A5F18B9
-P 1200 1400
-F 0 "TP1" H 1200 1600 50  0000 C BNN
-F 1 "TEST" H 1200 1650 50  0001 C CNN
-F 2 "Wire_Pads:SolderWirePad_single_1mmDrill" H 1200 1400 50  0001 C CNN
-F 3 "" H 1200 1400 50  0001 C CNN
-	1    1200 1400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1200 1400 1000 1400
-Connection ~ 1000 1400
-$Comp
 L CONN_01X06 J1
 U 1 1 5A5F2F1E
 P 9750 1200
@@ -517,10 +475,10 @@ $EndComp
 Text Notes 9450 800  0    60   ~ 0
 ISP header (female right-angle)\nlocated at TOP of all boards
 $Comp
-L GND #PWR5
+L GND #PWR011
 U 1 1 5A5F3604
 P 9400 1450
-F 0 "#PWR5" H 9400 1200 50  0001 C CNN
+F 0 "#PWR011" H 9400 1200 50  0001 C CNN
 F 1 "GND" H 9400 1300 50  0000 C CNN
 F 2 "" H 9400 1450 50  0001 C CNN
 F 3 "" H 9400 1450 50  0001 C CNN
@@ -540,10 +498,10 @@ Wire Wire Line
 Wire Wire Line
 	9550 1450 9400 1450
 $Comp
-L VCC #PWR1
+L VCC #PWR012
 U 1 1 5A5F3BEC
 P 9300 950
-F 0 "#PWR1" H 9300 800 50  0001 C CNN
+F 0 "#PWR012" H 9300 800 50  0001 C CNN
 F 1 "VCC" H 9300 1100 50  0000 C CNN
 F 2 "" H 9300 950 50  0001 C CNN
 F 3 "" H 9300 950 50  0001 C CNN
@@ -590,9 +548,6 @@ F 3 "" H 4700 6400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 6100 2950
-NoConn ~ 6100 3450
-NoConn ~ 6100 3550
-NoConn ~ 6100 3650
 NoConn ~ 6100 3750
 $Comp
 L R_Small R1
@@ -600,7 +555,7 @@ U 1 1 5A60843C
 P 10600 5600
 F 0 "R1" V 10600 5550 40  0000 L CNN
 F 1 "1k" V 10550 5550 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 10600 5600 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 10600 5600 50  0001 C CNN
 F 3 "" H 10600 5600 50  0001 C CNN
 	1    10600 5600
 	0    1    1    0   
@@ -613,7 +568,7 @@ U 1 1 5A608E2A
 P 10600 5700
 F 0 "R2" V 10600 5650 40  0000 L CNN
 F 1 "1k" V 10650 5650 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 10600 5700 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 10600 5700 50  0001 C CNN
 F 3 "" H 10600 5700 50  0001 C CNN
 	1    10600 5700
 	0    1    1    0   
@@ -624,7 +579,7 @@ U 1 1 5A608E7B
 P 10400 5800
 F 0 "R4" V 10400 5750 40  0000 L CNN
 F 1 "1k" V 10450 5750 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 10400 5800 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 10400 5800 50  0001 C CNN
 F 3 "" H 10400 5800 50  0001 C CNN
 	1    10400 5800
 	0    1    1    0   
@@ -950,17 +905,17 @@ U 1 1 5A6501C9
 P 8800 1750
 F 0 "C1" H 8810 1820 50  0000 L CNN
 F 1 "0.1u" H 8810 1670 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1206_HandSoldering" H 8800 1750 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 8800 1750 50  0001 C CNN
 F 3 "" H 8800 1750 50  0001 C CNN
 	1    8800 1750
 	1    0    0    -1  
 $EndComp
 Connection ~ 8800 1450
 $Comp
-L GND #PWR6
+L GND #PWR013
 U 1 1 5A65046A
 P 8800 2000
-F 0 "#PWR6" H 8800 1750 50  0001 C CNN
+F 0 "#PWR013" H 8800 1750 50  0001 C CNN
 F 1 "GND" H 8800 1850 50  0000 C CNN
 F 2 "" H 8800 2000 50  0001 C CNN
 F 3 "" H 8800 2000 50  0001 C CNN
@@ -973,8 +928,6 @@ Wire Wire Line
 	8800 1850 8800 2000
 Wire Wire Line
 	1000 1350 1000 1600
-Text Notes 550  950  0    60   ~ 0
-Remove batteries BEFORE plugging in programmer!
 Text Notes 8150 7650 0    60   ~ 0
 Winter 2017-2018
 Text Notes 1650 5550 0    100  ~ 0
@@ -992,5 +945,28 @@ F 3 "" H 1400 6500 100 0001 C CNN
 $EndComp
 Connection ~ 1200 6600
 Wire Wire Line
-	2100 6600 2100 6400
+	2100 6400 2750 6400
+Wire Wire Line
+	2100 6600 2150 6600
+Wire Wire Line
+	2150 6600 2150 6400
+Connection ~ 2150 6400
+Wire Wire Line
+	5350 3450 6100 3450
+Wire Wire Line
+	5350 3550 6100 3550
+Wire Wire Line
+	5350 3650 6100 3650
+Text Label 5400 3450 0    60   ~ 0
+Signal_In_C3
+Text Label 5400 3550 0    60   ~ 0
+Signal_In_C4
+Text Label 5400 3650 0    60   ~ 0
+Signal_In_C5
+Text Label 9650 5600 0    60   ~ 0
+Signal_Out_C0
+Text Label 9650 5700 0    60   ~ 0
+Signal_Out_C1
+Text Label 9650 5800 0    60   ~ 0
+Signal_Out_C2
 $EndSCHEMATC

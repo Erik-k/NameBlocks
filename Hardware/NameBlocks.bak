@@ -68,7 +68,7 @@ U 1 1 5A37FE54
 P 2300 1250
 F 0 "U1" H 2350 1300 60  0000 C CNN
 F 1 "ACPSA04-41SRWA-17406" H 2800 -400 60  0000 C CNN
-F 2 "" H 2300 1250 60  0001 C CNN
+F 2 "ACPSA04_Alphanumeric_LED:ACPSA04_Alphanumeric_LED" H 2300 1250 60  0001 C CNN
 F 3 "" H 2300 1250 60  0001 C CNN
 	1    2300 1250
 	1    0    0    -1  
@@ -79,7 +79,7 @@ U 1 1 5A3818AD
 P 1000 1800
 F 0 "BT1" H 1100 1900 50  0000 L CNN
 F 1 "Battery_Cell" H 1100 1800 50  0000 L CNN
-F 2 "Battery_Holders:Keystone_1058_1x2032-CoinCell" V 1000 1860 50  0001 C CNN
+F 2 "Battery_Holders:CR2032_SMD_BatteryHolder_BU2032SM-BT-GTR" V 1000 1860 50  0001 C CNN
 F 3 "" V 1000 1860 50  0001 C CNN
 	1    1000 1800
 	1    0    0    -1  
@@ -226,8 +226,6 @@ $EndComp
 Wire Wire Line
 	3400 5850 3400 5950
 Wire Wire Line
-	2100 6400 2750 6400
-Wire Wire Line
 	3400 7200 3400 7250
 $Comp
 L R_Small R5
@@ -235,7 +233,7 @@ U 1 1 5A3891C9
 P 4500 6600
 F 0 "R5" H 4530 6620 50  0000 L CNN
 F 1 "1M" H 4530 6560 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 4500 6600 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4500 6600 50  0001 C CNN
 F 3 "" H 4500 6600 50  0001 C CNN
 	1    4500 6600
 	1    0    0    -1  
@@ -304,11 +302,11 @@ $EndComp
 Wire Wire Line
 	1350 4400 1350 4550
 Wire Wire Line
-	900  4000 1350 4000
-Text Label 1000 4000 0    60   ~ 0
+	750  4000 1350 4000
+Text Label 800  4000 0    60   ~ 0
 Button
 Wire Wire Line
-	900  4100 1350 4100
+	750  4100 1350 4100
 Wire Wire Line
 	8700 4350 8600 4350
 Text Label 8650 4250 0    60   ~ 0
@@ -430,15 +428,15 @@ Signal_C1
 Text Label 9850 5800 0    60   ~ 0
 Signal_C2
 Wire Wire Line
-	1350 4200 900  4200
+	750  4200 1350 4200
 Wire Wire Line
-	1350 4300 900  4300
-Text Label 900  4100 0    60   ~ 0
-Signal_C0
-Text Label 900  4200 0    60   ~ 0
-Signal_C1
-Text Label 900  4300 0    60   ~ 0
-Signal_C2
+	750  4300 1350 4300
+Text Label 800  4100 0    60   ~ 0
+Signal_In_C3
+Text Label 800  4200 0    60   ~ 0
+Signal_In_C4
+Text Label 800  4300 0    60   ~ 0
+Signal_In_C5
 Wire Wire Line
 	6100 4050 5550 4050
 Text Label 5600 3850 0    60   ~ 0
@@ -449,31 +447,11 @@ U 1 1 5A5EF30A
 P 4100 7050
 F 0 "R6" H 4130 7070 50  0000 L CNN
 F 1 "1M" H 4130 7010 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 4100 7050 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4100 7050 50  0001 C CNN
 F 3 "" H 4100 7050 50  0001 C CNN
 	1    4100 7050
 	1    0    0    -1  
 $EndComp
-$Comp
-L R_Small R3
-U 1 1 5A5EF3C2
-P 2750 6100
-F 0 "R3" H 2780 6120 50  0000 L CNN
-F 1 "1M" H 2780 6060 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 2750 6100 50  0001 C CNN
-F 3 "" H 2750 6100 50  0001 C CNN
-F 4 "DNP" H 2850 6000 50  0000 C CNN "DNP"
-	1    2750 6100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2750 6000 2750 5950
-Wire Wire Line
-	2750 5950 3400 5950
-Wire Wire Line
-	2750 6400 2750 6200
-Text Notes 1650 5850 0    60   ~ 0
-DNP pullup on IN.\nShould be present inside device. 
 Wire Wire Line
 	4100 6950 4100 6800
 Connection ~ 4100 6800
@@ -489,20 +467,6 @@ Text Label 9300 1150 0    60   ~ 0
 MOSI
 Text Label 9300 1350 0    60   ~ 0
 RST
-$Comp
-L TEST TP1
-U 1 1 5A5F18B9
-P 1200 1400
-F 0 "TP1" H 1200 1600 50  0000 C BNN
-F 1 "TEST" H 1200 1650 50  0001 C CNN
-F 2 "Wire_Pads:SolderWirePad_single_1mmDrill" H 1200 1400 50  0001 C CNN
-F 3 "" H 1200 1400 50  0001 C CNN
-	1    1200 1400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1200 1400 1000 1400
-Connection ~ 1000 1400
 $Comp
 L CONN_01X06 J1
 U 1 1 5A5F2F1E
@@ -590,9 +554,6 @@ F 3 "" H 4700 6400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 6100 2950
-NoConn ~ 6100 3450
-NoConn ~ 6100 3550
-NoConn ~ 6100 3650
 NoConn ~ 6100 3750
 $Comp
 L R_Small R1
@@ -600,7 +561,7 @@ U 1 1 5A60843C
 P 10600 5600
 F 0 "R1" V 10600 5550 40  0000 L CNN
 F 1 "1k" V 10550 5550 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 10600 5600 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 10600 5600 50  0001 C CNN
 F 3 "" H 10600 5600 50  0001 C CNN
 	1    10600 5600
 	0    1    1    0   
@@ -613,7 +574,7 @@ U 1 1 5A608E2A
 P 10600 5700
 F 0 "R2" V 10600 5650 40  0000 L CNN
 F 1 "1k" V 10650 5650 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 10600 5700 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 10600 5700 50  0001 C CNN
 F 3 "" H 10600 5700 50  0001 C CNN
 	1    10600 5700
 	0    1    1    0   
@@ -624,7 +585,7 @@ U 1 1 5A608E7B
 P 10400 5800
 F 0 "R4" V 10400 5750 40  0000 L CNN
 F 1 "1k" V 10450 5750 50  0000 L CNN
-F 2 "Resistors_SMD:R_1206_HandSoldering" H 10400 5800 50  0001 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 10400 5800 50  0001 C CNN
 F 3 "" H 10400 5800 50  0001 C CNN
 	1    10400 5800
 	0    1    1    0   
@@ -950,7 +911,7 @@ U 1 1 5A6501C9
 P 8800 1750
 F 0 "C1" H 8810 1820 50  0000 L CNN
 F 1 "0.1u" H 8810 1670 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1206_HandSoldering" H 8800 1750 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 8800 1750 50  0001 C CNN
 F 3 "" H 8800 1750 50  0001 C CNN
 	1    8800 1750
 	1    0    0    -1  
@@ -973,17 +934,15 @@ Wire Wire Line
 	8800 1850 8800 2000
 Wire Wire Line
 	1000 1350 1000 1600
-Text Notes 550  950  0    60   ~ 0
-Remove batteries BEFORE plugging in programmer!
 Text Notes 8150 7650 0    60   ~ 0
 Winter 2017-2018
 Text Notes 1650 5550 0    100  ~ 0
 To turn ON: Push Button\nTo turn OFF: Push Button again and \nMAX16054 will shut off OUT
 $Comp
-L Button S?
+L Button S1
 U 1 1 5A6528B1
 P 1400 6350
-F 0 "S?" H 1450 6400 60  0000 C CNN
+F 0 "S1" H 1450 6400 60  0000 C CNN
 F 1 "Button" H 1750 6400 60  0000 C CNN
 F 2 "Buttons_Switches_SMD:SW_SPST_PTS645" H 1400 6500 100 0001 C CNN
 F 3 "" H 1400 6500 100 0001 C CNN
@@ -992,5 +951,22 @@ F 3 "" H 1400 6500 100 0001 C CNN
 $EndComp
 Connection ~ 1200 6600
 Wire Wire Line
-	2100 6600 2100 6400
+	2100 6400 2750 6400
+Wire Wire Line
+	2100 6600 2150 6600
+Wire Wire Line
+	2150 6600 2150 6400
+Connection ~ 2150 6400
+Wire Wire Line
+	6100 3450 5550 3450
+Wire Wire Line
+	6100 3550 5550 3550
+Wire Wire Line
+	6100 3650 5550 3650
+Text Label 5600 3450 0    60   ~ 0
+Signal_In_C3
+Text Label 5600 3550 0    60   ~ 0
+Signal_In_C4
+Text Label 5600 3650 0    60   ~ 0
+Signal_In_C5
 $EndSCHEMATC
