@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 68.821399 34.175799 271.609914 194.5424)
     (thickness 1.6)
-    (drawings 31)
+    (drawings 32)
     (tracks 542)
     (zones 0)
     (modules 19)
@@ -1711,6 +1711,9 @@
       (xy 0.376964 -2.709982)) (layer F.SilkS) (width 0.01))
   )
 
+  (gr_text "Extend the pads on the two RN1 RN2 TSSOP packages outward\nChange trace widths down to 6 mils if necessary" (at 109.2708 25.1714) (layer F.Fab)
+    (effects (font (size 2.032 2.032) (thickness 0.3)))
+  )
   (gr_text VCC (at 102.0318 47.1424 90) (layer F.SilkS) (tstamp 5A9DB6C2)
     (effects (font (size 0.762 0.762) (thickness 0.1524)))
   )
