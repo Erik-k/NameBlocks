@@ -89,7 +89,7 @@ L R_Pack08 RN1
 U 1 1 5A383588
 P 4600 1750
 F 0 "RN1" V 4100 1750 50  0000 C CNN
-F 1 "180" V 5000 1750 50  0001 C CNN
+F 1 "180" V 5050 1750 50  0000 C CNN
 F 2 "Housings_SSOP:SSOP-16_3.9x4.9mm_Pitch0.635mm" V 5075 1750 50  0001 C CNN
 F 3 "" H 4600 1750 50  0001 C CNN
 F 4 "VSSR1603181JUF" V 4600 1750 60  0001 C CNN "MFGPN"
@@ -279,11 +279,11 @@ $EndComp
 Text Notes 8950 5300 0    50   ~ 0
 OUTGOING male pins located on RIGHT of all boards.\nPin 1 is Button Line to ensure simultaneous power-up.\nPins 2, 3, 4 are signal lines.\nCurrent limiting resistor ensures chip won't burn out \nif a logic low connects to a logic high.\nPin 5 is shared common.
 Wire Wire Line
-	10300 5800 9850 5800
+	9600 5800 10300 5800
 Wire Wire Line
-	9850 5700 10500 5700
+	9600 5700 10500 5700
 Wire Wire Line
-	10500 5600 9850 5600
+	9600 5600 10500 5600
 Text Label 2350 6400 0    60   ~ 0
 Button
 Text Label 9850 5500 0    60   ~ 0
@@ -410,23 +410,17 @@ Wire Wire Line
 Wire Wire Line
 	9850 5500 10850 5500
 Wire Wire Line
-	6100 3150 5550 3150
+	5350 3150 6100 3150
 Wire Wire Line
-	6100 3250 5550 3250
+	5350 3250 6100 3250
 Wire Wire Line
-	6100 3350 5550 3350
-Text Label 5600 3150 0    60   ~ 0
-Signal_C0
-Text Label 5600 3250 0    60   ~ 0
-Signal_C1
-Text Label 5600 3350 0    60   ~ 0
-Signal_C2
-Text Label 9850 5600 0    60   ~ 0
-Signal_C0
-Text Label 9850 5700 0    60   ~ 0
-Signal_C1
-Text Label 9850 5800 0    60   ~ 0
-Signal_C2
+	5350 3350 6100 3350
+Text Label 5400 3150 0    60   ~ 0
+Signal_Out_C0
+Text Label 5400 3250 0    60   ~ 0
+Signal_Out_C1
+Text Label 5400 3350 0    60   ~ 0
+Signal_Out_C2
 Wire Wire Line
 	750  4200 1350 4200
 Wire Wire Line
@@ -535,7 +529,7 @@ L R_Pack08 RN2
 U 1 1 5A5FAA53
 P 4200 2550
 F 0 "RN2" V 3700 2550 50  0000 C CNN
-F 1 "180" V 4600 2550 50  0001 C CNN
+F 1 "180" V 4600 2550 50  0000 C CNN
 F 2 "Housings_SSOP:SSOP-16_3.9x4.9mm_Pitch0.635mm" V 4675 2550 50  0001 C CNN
 F 3 "" H 4200 2550 50  0001 C CNN
 F 4 "VSSR1603181JUF" V 4200 2550 60  0001 C CNN "MFGPN"
@@ -546,10 +540,10 @@ $Comp
 L Q_NMOS_GSD Q1
 U 1 1 5A6037F5
 P 4700 6400
-F 0 "Q1" H 4900 6450 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 4900 6350 50  0000 L CNN
+F 0 "Q1" H 4900 6500 50  0000 L CNN
+F 1 "N-MOSFET" H 4900 6400 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:SC-59_Handsoldering" H 4900 6500 50  0001 C CNN
-F 3 "" H 4700 6400 50  0001 C CNN
+F 3 "DMN1019USN-13DICT-ND" H 4900 6300 50  0000 L CNN
 	1    4700 6400
 	1    0    0    -1  
 $EndComp
@@ -958,15 +952,21 @@ Wire Wire Line
 	2150 6600 2150 6400
 Connection ~ 2150 6400
 Wire Wire Line
-	6100 3450 5550 3450
+	5350 3450 6100 3450
 Wire Wire Line
-	6100 3550 5550 3550
+	5350 3550 6100 3550
 Wire Wire Line
-	6100 3650 5550 3650
-Text Label 5600 3450 0    60   ~ 0
+	5350 3650 6100 3650
+Text Label 5400 3450 0    60   ~ 0
 Signal_In_C3
-Text Label 5600 3550 0    60   ~ 0
+Text Label 5400 3550 0    60   ~ 0
 Signal_In_C4
-Text Label 5600 3650 0    60   ~ 0
+Text Label 5400 3650 0    60   ~ 0
 Signal_In_C5
+Text Label 9650 5600 0    60   ~ 0
+Signal_Out_C0
+Text Label 9650 5700 0    60   ~ 0
+Signal_Out_C1
+Text Label 9650 5800 0    60   ~ 0
+Signal_Out_C2
 $EndSCHEMATC
